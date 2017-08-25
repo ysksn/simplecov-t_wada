@@ -1,15 +1,11 @@
 # Simplecov::TWada
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/simplecov/t_wada`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'simplecov-t_wada'
+gem 'simplecov-t_wada', require: false
 ```
 
 And then execute:
@@ -22,7 +18,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+**AA and Message are shown only when your test coverage is below** `SimpleCov.minimum_coverage`.
+
+Edit your `spec_helper.rb`, `test_helper.rb`, or `.simplecov` like below:
+
+```ruby
+# test_helper.rb
+
+SimpleCov.start 'rails' do
+  # Don't forget to specify this value
+  SimpleCov.minimum_coverage 95
+
+  require 'simplecov/t_wada'
+  SimpleCov.formatter = SimpleCov::Formatter::TWada
+  
+  # You can customize AA and Message if you want
+  SimpleCov::Formatter::TWada.aa      = '＼(^o^)／'
+  SimpleCov::Formatter::TWada.message = '俺をこれ以上怒らせるんじゃねぇ'
+end
+```
+
 
 ## Development
 
